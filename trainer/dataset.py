@@ -146,11 +146,14 @@ class OCRDataset(Dataset):
         self.root = root
         self.opt = opt
         print(root)
-        self.df = pd.read_csv(os.path.join(root,'labels.csv'), sep='^([^,]+),', engine='python', usecols=['filename', 'words'], keep_default_na=False)
+        self.df = pd.read_csv(os.path.join(root,'labels.csv'), sep='^([^,]+),', engine='python', usecols=['filename', 'words'], keep_default_na=False,encoding="utf-8")
         self.nSamples = len(self.df)
+        print("self.df: {}".format(self.df))
+        print("In __init__: {}".format(self.nSamples))
 
         if self.opt.data_filtering_off:
-            self.filtered_index_list = [index + 1 for index in range(self.nSamples)]
+            # Why add one?
+            self.filtered_index_list = [index for index in range(self.nSamples)]
         else:
             self.filtered_index_list = []
             for index in range(self.nSamples):
@@ -167,6 +170,7 @@ class OCRDataset(Dataset):
             self.nSamples = len(self.filtered_index_list)
 
     def __len__(self):
+        print("in __len__:{}".format(self.nSamples))
         return self.nSamples
 
     def __getitem__(self, index):
