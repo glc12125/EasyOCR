@@ -218,7 +218,7 @@ class Reader(object):
         dict_list = {}
         for lang in lang_list:
             dict_list[lang] = os.path.join(BASE_PATH, 'dict', lang + ".txt")
-
+        print("dict_list: {}".format(dict_list))
         if detector:
             self.detector = get_detector(detector_path, self.device, quantize, cudnn_benchmark=cudnn_benchmark)
         if recognizer:
@@ -264,7 +264,7 @@ class Reader(object):
         if model:
             symbol = model['symbols']
         else:
-            symbol = '0123456789!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '
+            symbol = '0123456789!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ €≥≤±'
         self.lang_char = set(self.lang_char).union(set(symbol))
         self.lang_char = ''.join(self.lang_char)
 

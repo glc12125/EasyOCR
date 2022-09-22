@@ -1,15 +1,15 @@
 number: '0123456789'
-symbol: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ €"
+symbol: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ €≥≤±"
 lang_char: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 lang: 'cn_sim'
-experiment_name: 'cn_sim_chem'
+experiment_name: 'cn_sim_chem_new_2022_09_21'
 train_data: 'all_data'
-valid_data: 'all_data/en_val'
+valid_data: 'all_data/val_all'
 manualSeed: 1111
 workers: 0
 batch_size: 32 #32
-num_iter: 300000
-valInterval: 20000
+num_iter: 600000
+valInterval: 10000
 saved_model: '' #'saved_models/ch_sim_chem/iter_300000.pth'
 FT: False
 optim: False # default is Adadelta
@@ -19,8 +19,8 @@ rho: 0.95
 eps: 0.00000001
 grad_clip: 5
 #Data processing
-select_data: 'en_train-out_ch_word1-out_ch_word5_b1-out_ch_word5_b2-out_ch_word5_b3' # this is dataset folder in train_data
-batch_ratio: '0.2-0.2-0.2-0.2-0.2' 
+select_data: 'out_chem_word5_b0_new-out_chem_word5_b1_new-out_chem_word5_b2_new-out_chem_word5_b3_new-out_ch_word5_b0_new-out_ch_word5_b1_new-out_ch_word5_b2_new-out_ch_word5_b3_new-out_ch_word5_b3_new_1' # this is dataset folder in train_data
+batch_ratio: '0.071428571-0.071428571-0.071428571-0.09375-0.142857143-0.142857143-0.142857143-0.15625-0.1875'
 total_data_usage_ratio: 1.0
 batch_max_length: 34 
 imgH: 64
